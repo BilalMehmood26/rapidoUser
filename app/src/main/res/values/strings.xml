@@ -3,6 +3,8 @@
     <string name="sign_up"><u>Sign Up</u></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="forgot_your_password"><u>Forgot Your Password?</u>></string>
+    <string name="api_key">AIzaSyBBHiPBzaKIdhByQszaX4VdbtngMjoDFZ8</string>
+    <string name="enter_verification_code_recived_on_your_phone_number">Enter Verification code recived on your phone number.</string>
 
 
     <array name="pharmacy_list">

@@ -15,11 +15,11 @@
         android:background="@drawable/bg_box"
         android:orientation="horizontal"
         android:padding="@dimen/_3sdp"
-        android:weightSum="2"
+        android:weightSum="3"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/newDeliveryTab"
+            android:id="@+id/pendingTab"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -27,9 +27,22 @@
             android:fontFamily="@font/montserrat_medium"
             android:gravity="center"
             android:paddingVertical="@dimen/_10sdp"
-            android:text="New Delivery Request"
+            android:text="Pending"
             android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_7sdp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/newDeliveryTab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_medium"
+            android:gravity="center"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="New Delivery Request"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_7sdp"
             android:textStyle="italic" />
 
         <TextView
@@ -42,7 +55,7 @@
             android:paddingVertical="@dimen/_10sdp"
             android:text="Delivered"
             android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_7sdp"
             android:textStyle="italic" />
 
     </LinearLayout>
@@ -57,5 +70,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,31 @@
+package com.buzzware.rapidouser.Model
+
+data class Order(
+    var OrderID: String = "",
+    var PostCode: String = "",
+    var address: String = "",
+    var city: String = "",
+    var comments: String = "",
+    var dob: String = "",
+    var doctorid: String = "",
+    var driverid: String = "",
+    var instructionfordrivers: String = "",
+    var modeofpayment: String = "",
+    var patientEmail: String = "",
+    var patientID: String = "",
+    var patientName: String = "",
+    var patientNumber: String = "",
+    var pharmacyID: String = "",
+    var pharmacyName: String = "",
+    var price: String = "",
+    var parsalImage: String = "",
+    var reciverImage: String = "",
+    var signatureImage: String = "",
+    var status: String = "",
+    var latitude: Long = 0,
+    var longitude: Long = 0,
+    var time: Long = 0,
+    var date: Long = 0,
+    var deliveredDate: Long = 0,
+    var DeliverRequestDate: Long = 0
+)

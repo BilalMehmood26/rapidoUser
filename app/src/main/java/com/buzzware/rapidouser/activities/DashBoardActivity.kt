@@ -108,6 +108,10 @@ class DashBoardActivity : AppCompatActivity(), FragmentListener{
                 transaction.commit()
             }
 
+            "history" -> {
+                setHistoryTab()
+            }
+
             "homeSchedule" -> {
                 showDialogue()
             }

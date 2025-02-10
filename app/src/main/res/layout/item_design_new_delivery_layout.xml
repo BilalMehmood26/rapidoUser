@@ -14,7 +14,7 @@
         android:id="@+id/userProfileIV"
         android:layout_width="@dimen/_60sdp"
         android:layout_height="@dimen/_60sdp"
-        android:src="@drawable/dummy_user_1"
+        android:src="@drawable/icon_profile_unselected"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,19 +30,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
-            android:text="Christian C. Kunig"
+            android:text="----"
             android:textColor="@color/black"
             android:textSize="@dimen/_13sdp"
             android:textStyle="italic" />
 
         <TextView
+            android:id="@+id/pharmacy_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
-            android:text="D.Watson medical"
+            android:text="---"
             android:textColor="@color/hint_color"
             android:textSize="@dimen/_10sdp"
             android:textStyle="italic" />
@@ -57,7 +59,7 @@
                 android:id="@+id/driverProfileIV"
                 android:layout_width="@dimen/_21sdp"
                 android:layout_height="@dimen/_21sdp"
-                android:src="@drawable/dummy_driver"
+                android:src="@drawable/icon_profile_unselected"
                 app:layout_constraintBottom_toBottomOf="@+id/driverDetailLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/driverDetailLayout" />
@@ -74,10 +76,11 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/driver_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="Davson"
+                    android:text="----"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="italic" />
@@ -110,6 +113,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/payment_status_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text=""
+        android:visibility="gone"
+        android:textColor="@color/dark_red_color"
+        android:textSize="@dimen/_8sdp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusTV" />
+
     <LinearLayout
         android:id="@+id/timeLayout"
         android:layout_width="match_parent"
@@ -127,6 +143,7 @@
             app:layout_constraintTop_toTopOf="@+id/driverDetailLayout" />
 
         <TextView
+            android:id="@+id/date_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
@@ -155,6 +172,7 @@
             app:layout_constraintTop_toTopOf="@+id/driverDetailLayout" />
 
         <TextView
+            android:id="@+id/address_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
@@ -186,6 +204,7 @@
             app:layout_constraintTop_toTopOf="@+id/driverDetailLayout" />
 
         <TextView
+            android:id="@+id/phone_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
@@ -211,12 +230,13 @@
         <ImageView
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_15sdp"
-            android:src="@drawable/icon_phone_with_bg"
+            android:src="@drawable/icon_mail_with_bg"
             app:layout_constraintBottom_toBottomOf="@+id/driverDetailLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/driverDetailLayout" />
 
         <TextView
+            android:id="@+id/email_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
@@ -229,4 +249,20 @@
     </LinearLayout>
 
 
+    <TextView
+        android:id="@+id/pay_now_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_red_color"
+        android:fontFamily="@font/montserrat_regular"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_20sdp"
+        android:paddingVertical="@dimen/_5sdp"
+        android:text="Pay Now"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="@+id/mailLayout"
+        app:layout_constraintTop_toBottomOf="@+id/mailLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

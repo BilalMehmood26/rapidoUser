@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "210742103214",
+    "project_id": "repidorx",
+    "storage_bucket": "repidorx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210742103214:android:6a0c8056507a9eb2cff13f",
+        "android_client_info": {
+          "package_name": "com.buzzware.radidodriver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210742103214-tkeojknmu9hggv0ggijkoqk8uut2lv1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.buzzware.radidodriver",
+            "certificate_hash": "789f26a495f81fc0b0018ca3160a17e127446350"
+          }
+        },
+        {
+          "client_id": "210742103214-0qbm55cmq6nad74djh3ksl5sn8t43630.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq3yTQMSwOq0q2k5JC24ZAPnidNPFz_k8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210742103214-0qbm55cmq6nad74djh3ksl5sn8t43630.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "210742103214-frd3jipi14ttf2ba4aojvedca82mgch8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.buzzware.repdioUser"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210742103214:android:b78951649b48093bcff13f",
+        "android_client_info": {
+          "package_name": "com.buzzware.rapidouser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210742103214-ubsatec8f1auasujph5b1h5k4mu4rin8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.buzzware.rapidouser",
+            "certificate_hash": "8454924092703eaffe4a301c142522c88912bcfe"
+          }
+        },
+        {
+          "client_id": "210742103214-0qbm55cmq6nad74djh3ksl5sn8t43630.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq3yTQMSwOq0q2k5JC24ZAPnidNPFz_k8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210742103214-0qbm55cmq6nad74djh3ksl5sn8t43630.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "210742103214-frd3jipi14ttf2ba4aojvedca82mgch8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.buzzware.repdioUser"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -22,101 +22,103 @@
         android:text="Pharmacy Pick up Location"
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintBottom_toTopOf="@+id/pharmacyNameET"
+        app:layout_constraintBottom_toTopOf="@+id/parajeID"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-    <EditText
-        android:id="@+id/pharmacyNameET"
+    <com.skydoves.powerspinner.PowerSpinnerView
+        android:id="@+id/parajeID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/bg_box"
-        android:paddingVertical="@dimen/_12sdp"
-        android:hint="Pharmacy Name"
-        android:textColorHint="@color/hint_color"
         android:fontFamily="@font/montserrat_regular"
-        android:textSize="@dimen/_10sdp"
+        android:gravity="start"
+        android:hint="Select Pharmacy"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:paddingVertical="@dimen/_12sdp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint_color"
+        android:textSize="@dimen/_11sdp"
         android:textStyle="italic"
-        android:imeOptions="actionNext"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:paddingHorizontal="@dimen/_10sdp"
+        app:spinner_arrow_drawable="@drawable/icon_dropdown_small"
+        app:spinner_arrow_gravity="end"
         android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintBottom_toTopOf="@+id/pharmacyNumberET" />
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:spinner_arrow_padding="@dimen/_7sdp"
+        app:spinner_divider_color="@color/hint_color"
+        app:spinner_divider_show="true"
+        app:spinner_divider_size="0.4dp"
+        app:spinner_item_array="@array/pharmacy_list"
+        app:spinner_popup_animation="dropdown"
+        app:spinner_popup_background="@drawable/bg_box"
+        app:spinner_popup_elevation="@dimen/_10sdp"
+        tools:ignore="HardcodedText,UnusedAttribute"
+        app:layout_constraintBottom_toTopOf="@+id/phoneLayout" />
 
-    <EditText
-        android:id="@+id/pharmacyNumberET"
+    <LinearLayout
+        android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
         android:background="@drawable/bg_box"
-        android:paddingVertical="@dimen/_12sdp"
-        android:hint="Pharmacy Number"
-        android:textColorHint="@color/hint_color"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="@dimen/_10sdp"
-        android:textStyle="italic"
-        android:imeOptions="actionNext"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:paddingHorizontal="@dimen/_10sdp"
         android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintBottom_toTopOf="@+id/pharmacyAddressET" />
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/pharmacyAddressET">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/phone_ccp"
+            android:layout_weight="1.23"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColorHint="@color/hint_color"
+            android:fontFamily="@font/montserrat_regular"
+            app:ccp_showArrow="true"
+            app:ccp_autoFormatNumber="true"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_textSize="14sp" />
+
+        <EditText
+            android:id="@+id/phone_et"
+            android:layout_weight="2.5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:paddingVertical="@dimen/_12sdp"
+            android:hint="Phone Number"
+            android:textColorHint="@color/hint_color"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="italic"
+            android:imeOptions="actionNext"
+            android:paddingHorizontal="@dimen/_10sdp" />
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/pharmacyAddressET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_box"
-        android:paddingVertical="@dimen/_12sdp"
-        android:hint="Pharmacy Address"
-        android:textColorHint="@color/hint_color"
         android:fontFamily="@font/montserrat_regular"
-        android:textSize="@dimen/_10sdp"
-        android:textStyle="italic"
+        android:hint="Pharmacy Address"
         android:imeOptions="actionNext"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintBottom_toTopOf="@+id/stateET" />
-
-    <EditText
-        android:id="@+id/stateET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_box"
         android:paddingVertical="@dimen/_12sdp"
-        android:hint="State"
         android:textColorHint="@color/hint_color"
-        android:fontFamily="@font/montserrat_regular"
         android:textSize="@dimen/_10sdp"
         android:textStyle="italic"
-        android:imeOptions="actionNext"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintBottom_toTopOf="@+id/postCodeET" />
-
-    <EditText
-        android:id="@+id/postCodeET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_box"
-        android:paddingVertical="@dimen/_12sdp"
-        android:hint="Post Code"
-        android:textColorHint="@color/hint_color"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="@dimen/_10sdp"
-        android:textStyle="italic"
-        android:imeOptions="actionNext"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
         app:layout_constraintBottom_toTopOf="@+id/doneTV" />
-
 
     <TextView
         android:id="@+id/doneTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:background="@color/red_color"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="center"
@@ -125,9 +127,19 @@
         android:text="Done"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

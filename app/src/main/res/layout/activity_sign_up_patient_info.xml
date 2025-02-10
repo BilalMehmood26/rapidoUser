@@ -32,11 +32,12 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_box"
         android:paddingVertical="@dimen/_12sdp"
-        android:hint="Last Name"
+        android:hint="First Name"
         android:textColorHint="@color/hint_color"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="@dimen/_10sdp"
         android:textStyle="italic"
+        android:inputType="text"
         android:imeOptions="actionNext"
         android:layout_marginBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_10sdp"
@@ -54,6 +55,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:textSize="@dimen/_10sdp"
         android:textStyle="italic"
+        android:inputType="text"
         android:imeOptions="actionNext"
         android:layout_marginBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_10sdp"
@@ -78,7 +80,7 @@
         android:layout_marginHorizontal="@dimen/_15sdp"
         app:layout_constraintBottom_toTopOf="@+id/birthET" />
 
-    <EditText
+    <TextView
         android:id="@+id/birthET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,38 +101,39 @@
         android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_box"
         android:orientation="horizontal"
         android:weightSum="4"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         app:layout_constraintBottom_toTopOf="@+id/passwordLayout">
 
-        <EditText
-            android:layout_weight="1"
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp_tv"
+            android:layout_weight="1.2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_box"
-            android:paddingVertical="@dimen/_12sdp"
-            android:hint="+44"
+            android:layout_gravity="center_vertical"
             android:textColorHint="@color/hint_color"
             android:fontFamily="@font/montserrat_regular"
-            android:textSize="@dimen/_10sdp"
-            android:textStyle="italic"
-            android:imeOptions="actionNext"
-            android:paddingHorizontal="@dimen/_10sdp" />
+            app:ccp_showArrow="true"
+            app:ccp_autoFormatNumber="true"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_textSize="14sp" />
 
         <EditText
-            android:layout_weight="3"
+            android:id="@+id/phone_et"
+            android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_box"
+            android:background="@null"
             android:paddingVertical="@dimen/_12sdp"
+            android:inputType="number"
             android:hint="Phone Number"
             android:textColorHint="@color/hint_color"
             android:fontFamily="@font/montserrat_regular"
             android:textSize="@dimen/_10sdp"
             android:textStyle="italic"
-            android:layout_marginStart="@dimen/_10sdp"
             android:imeOptions="actionNext"
             android:paddingHorizontal="@dimen/_10sdp" />
 
@@ -195,5 +198,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

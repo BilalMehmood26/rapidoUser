@@ -31,6 +31,7 @@
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_70sdp"
             android:src="@drawable/icon_camera"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,11 +65,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/first_name_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            android:text="Carol "
+            tools:text="Carol "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -106,11 +108,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/last_name_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            android:text="DeLaurier "
+            tools:text="DeLaurier "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -148,11 +151,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/email_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            android:text="CarolDeLaurier@rapido-rx.com "
+            tools:text="CarolDeLaurier@rapido-rx.com "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -190,11 +194,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/phone_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            android:text="+98 765 4321 0 "
+            tools:text="+98 765 4321 0 "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -232,11 +237,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/password_et"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            android:text="*************** "
+            tools:text="*************** "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -250,7 +256,7 @@
 
 
     <TextView
-        android:id="@+id/saveTV"
+        android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/red_color"
@@ -265,5 +271,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
