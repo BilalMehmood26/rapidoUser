@@ -37,7 +37,7 @@
         android:textSize="@dimen/_10sdp"
         android:textStyle="italic"
         android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
+        android:inputType="textCapWords"
         android:layout_marginBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_10sdp"
         android:layout_marginHorizontal="@dimen/_15sdp"
@@ -54,6 +54,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:textSize="@dimen/_10sdp"
         android:textStyle="italic"
+        android:inputType="textCapWords"
         android:imeOptions="actionNext"
         android:layout_marginBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_10sdp"
@@ -66,13 +67,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="4"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:background="@drawable/bg_box"
         android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@+id/clinicNameET">
+        app:layout_constraintBottom_toTopOf="@+id/nextTV">
 
 
         <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
             android:layout_weight="1.23"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -85,6 +87,7 @@
             app:ccp_textSize="14sp" />
 
         <EditText
+            android:id="@+id/relative_phone_number_et"
             android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -95,28 +98,12 @@
             android:fontFamily="@font/montserrat_regular"
             android:textSize="@dimen/_10sdp"
             android:textStyle="italic"
-            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:imeOptions="actionDone"
             android:paddingHorizontal="@dimen/_10sdp" />
 
 
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/clinicNameET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_box"
-        android:paddingVertical="@dimen/_12sdp"
-        android:hint="Clinic Name"
-        android:textColorHint="@color/hint_color"
-        android:fontFamily="@font/montserrat_regular"
-        android:textSize="@dimen/_10sdp"
-        android:textStyle="italic"
-        android:imeOptions="actionNext"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintBottom_toTopOf="@+id/nextTV" />
 
     <TextView
         android:id="@+id/nextTV"

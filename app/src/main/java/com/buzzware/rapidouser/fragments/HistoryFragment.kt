@@ -3,6 +3,7 @@ package com.buzzware.rapidouser.fragments
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.buzzware.rapidouser.Model.Order
-import com.buzzware.rapidouser.Model.Pharmacy
-import com.buzzware.rapidouser.Model.User
 import com.buzzware.rapidouser.R
 import com.buzzware.rapidouser.adapter.DeliveredAdapter
 import com.buzzware.rapidouser.adapter.NewDeliveryAdapter
@@ -23,14 +22,24 @@ import com.google.firebase.ktx.Firebase
 
 class HistoryFragment : Fragment() {
 
-    private lateinit var binding : FragmentHistoryBinding
+    private lateinit var binding: FragmentHistoryBinding
     private lateinit var fragmentContext: Context
 
-    private val pendingOrderList : ArrayList<Order> = arrayListOf()
-    private val newOrderList : ArrayList<Order> = arrayListOf()
-    private val deliveredOrderList : ArrayList<Order> = arrayListOf()
+    private lateinit var pendingAdapter: PendingDeliveryAdapter
+    private lateinit var newDeliveryAdapter: NewDeliveryAdapter
+    private lateinit var deliveredAdapter: DeliveredAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    private val pendingOrderList: ArrayList<Order> = arrayListOf()
+    private val newOrderList: ArrayList<Order> = arrayListOf()
+    private val deliveredOrderList: ArrayList<Order> = arrayListOf()
+
+    private var adapterCheck = "pending"
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentHistoryBinding.inflate(layoutInflater)
 
         setListener()
@@ -42,7 +51,7 @@ class HistoryFragment : Fragment() {
     private fun setListener() {
 
         binding.pendingTab.setOnClickListener {
-
+            adapterCheck = "pending"
             binding.pendingTab.setBackgroundColor(resources.getColor(R.color.dark_red_color))
             binding.pendingTab.setTextColor(resources.getColor(R.color.white))
 
@@ -53,12 +62,10 @@ class HistoryFragment : Fragment() {
             binding.alreadyDeliveredTab.setTextColor(resources.getColor(R.color.black))
 
             setPendingAdapter()
-
-
         }
 
         binding.newDeliveryTab.setOnClickListener {
-
+            adapterCheck = "new"
             binding.newDeliveryTab.setBackgroundColor(resources.getColor(R.color.dark_red_color))
             binding.newDeliveryTab.setTextColor(resources.getColor(R.color.white))
 
@@ -69,12 +76,10 @@ class HistoryFragment : Fragment() {
             binding.alreadyDeliveredTab.setTextColor(resources.getColor(R.color.black))
 
             setNewDeliveryAdapter()
-
-
         }
 
         binding.alreadyDeliveredTab.setOnClickListener {
-
+            adapterCheck = "complete"
             binding.alreadyDeliveredTab.setBackgroundColor(resources.getColor(R.color.dark_red_color))
             binding.alreadyDeliveredTab.setTextColor(resources.getColor(R.color.white))
 
@@ -85,57 +90,67 @@ class HistoryFragment : Fragment() {
             binding.newDeliveryTab.setTextColor(resources.getColor(R.color.black))
 
             setAlreadyDeliveredAdapter()
-
-
         }
 
     }
 
-    private fun getOrders(){
+    private fun getOrders() {
 
         binding.progressBar.visibility = View.VISIBLE
         Firebase.firestore.collection("OrderRequest").addSnapshotListener { value, error ->
 
-            if(error!=null){
+            if (error != null) {
                 binding.progressBar.visibility = View.GONE
                 Toast.makeText(fragmentContext, "${error.message}", Toast.LENGTH_SHORT).show()
                 return@addSnapshotListener
             }
+
             pendingOrderList.clear()
             newOrderList.clear()
             deliveredOrderList.clear()
             value!!.forEach {
                 val order = it.toObject(Order::class.java)
-                if(order.patientID.equals(UserSession.user.id)){
-                    when(order.status){
-                        "pending" ->  pendingOrderList.add(order)
-                        "Active","Payment Approval","Paid" ->  newOrderList.add(order)
-                        "Complete" ->  deliveredOrderList.add(order)
+                if (order.patientID.equals(UserSession.user.id)) {
+                    when (order.status) {
+                        "pending" -> pendingOrderList.add(order)
+                        "Active", "Payment Approval", "Paid" -> newOrderList.add(order)
+                        "Complete" -> deliveredOrderList.add(order)
                     }
                 }
             }
             binding.progressBar.visibility = View.GONE
+            when(adapterCheck){
+                "pending" -> setPendingAdapter()
+                "new" -> setNewDeliveryAdapter()
+                "complete" -> setAlreadyDeliveredAdapter()
+            }
         }
-        setPendingAdapter()
     }
 
     private fun setNewDeliveryAdapter() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(fragmentContext)
-        binding.recyclerView.adapter = NewDeliveryAdapter(fragmentContext, newOrderList)
+        newDeliveryAdapter = NewDeliveryAdapter(fragmentContext, newOrderList) {
+            Firebase.firestore.collection("OrderRequest").document(it)
+                .update("status", "Paid")
+        }
+
+        binding.recyclerView.adapter = newDeliveryAdapter
 
     }
 
     private fun setAlreadyDeliveredAdapter() {
 
         binding.recyclerView.layoutManager = LinearLayoutManager(fragmentContext)
-        binding.recyclerView.adapter = DeliveredAdapter(fragmentContext, deliveredOrderList)
+        deliveredAdapter = DeliveredAdapter(fragmentContext, deliveredOrderList)
+        binding.recyclerView.adapter = deliveredAdapter
 
     }
 
     private fun setPendingAdapter() {
         binding.recyclerView.layoutManager = LinearLayoutManager(fragmentContext)
-        binding.recyclerView.adapter = PendingDeliveryAdapter(fragmentContext, pendingOrderList)
+        pendingAdapter = PendingDeliveryAdapter(fragmentContext, pendingOrderList)
+        binding.recyclerView.adapter = pendingAdapter
 
     }
 

@@ -53,13 +53,13 @@ class PharmacyLocationActivity : AppCompatActivity() {
                 val attachment = hashMapOf(
                     "id" to attachmentID,
                     "pharmacyName" to pharmacy.pharmacyName,
-                    "pharmistID" to pharmacy.id,
+                    "pharmistID" to pharmacy.id.toString(),
                     "status" to "pending",
                     "time" to System.currentTimeMillis(),
                     "type" to "patient",
                     "userID" to Firebase.auth.currentUser!!.uid
                 )
-                Firebase.firestore.collection("pharmacy").document(attachmentID).set(attachment)
+                Firebase.firestore.collection("Attachment").document(attachmentID).set(attachment)
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             binding.progressBar.visibility = View.GONE

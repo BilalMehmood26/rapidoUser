@@ -12,12 +12,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.buzzware.rapidouser.R
 import com.buzzware.rapidouser.databinding.FragmentAccountBinding
-import com.buzzware.rapidouser.databinding.FragmentNotificationBinding
 import com.buzzware.rapidouser.utils.UserSession
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -33,7 +32,6 @@ class AccountFragment : Fragment() {
         binding = FragmentAccountBinding.inflate(layoutInflater)
 
         setView()
-        setListener()
 
         return binding.root
     }
@@ -116,11 +114,14 @@ class AccountFragment : Fragment() {
                             UserSession.user.email = email
                             UserSession.user.phoneNumber = phone
                             UserSession.user.password = password
-                            Toast.makeText(fragmentContext, "Profile Updated", Toast.LENGTH_SHORT)
-                                .show()
+
                             if(password.isEmpty()){
                                 updatePassword(password)
+                            }else{
+                                binding.progressBar.visibility = View.GONE
+                                Toast.makeText(fragmentContext, "Profile Updated!", Toast.LENGTH_SHORT).show()
                             }
+
                         }.addOnFailureListener {
                             binding.progressBar.visibility = View.GONE
                             Toast.makeText(
@@ -151,10 +152,12 @@ class AccountFragment : Fragment() {
                     UserSession.user.phoneNumber = phone
                     UserSession.user.password = password
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(fragmentContext, "Profile Updated", Toast.LENGTH_SHORT)
-                        .show()
                     if(password.isNotEmpty()){
                         updatePassword(password)
+                    }else{
+                        binding.progressBar.visibility = View.GONE
+                        Toast.makeText(fragmentContext, "Profile Updated", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }.addOnFailureListener {
                     binding.progressBar.visibility = View.GONE
@@ -172,13 +175,14 @@ class AccountFragment : Fragment() {
         binding.progressBar.visibility = View.VISIBLE
         val credential =
             EmailAuthProvider.getCredential(UserSession.user.email!!, UserSession.user.password!!)
-   /*     Firebase.auth.currentUser?.reauthenticate(credential)
+        Firebase.auth.currentUser?.reauthenticate(credential)
             ?.addOnCompleteListener { reauthTask ->
                 if (reauthTask.isSuccessful) {
                     Firebase.auth.currentUser!!.updatePassword(password)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 binding.progressBar.visibility = View.GONE
+                                Toast.makeText(fragmentContext, "Profile Updated!", Toast.LENGTH_SHORT).show()
                                 Log.d("LOGGER!", "Password updated successfully.")
                             } else {
                                 binding.progressBar.visibility = View.GONE
@@ -202,15 +206,8 @@ class AccountFragment : Fragment() {
                     ).show()
                     Log.e("LOGGER!", "Re-authentication failed: ${reauthTask.exception?.message}")
                 }
-            }*/
+            }
     }
-
-    private fun setListener() {
-        binding.saveBtn.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
-    }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

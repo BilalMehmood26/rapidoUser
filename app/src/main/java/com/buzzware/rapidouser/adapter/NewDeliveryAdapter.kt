@@ -22,7 +22,11 @@ import com.buzzware.rapidouser.utils.openPhoneDialer
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class NewDeliveryAdapter(val context: Context, val list: ArrayList<Order>) :
+class NewDeliveryAdapter(
+    val context: Context,
+    val list: ArrayList<Order>,
+    val paidClick: (String) -> Unit
+) :
     RecyclerView.Adapter<NewDeliveryAdapter.ViewHolder>() {
 
 
@@ -45,24 +49,25 @@ class NewDeliveryAdapter(val context: Context, val list: ArrayList<Order>) :
 
         holder.binding.apply {
 
-            if(UserSession.user.image.isNotEmpty()){
+            if (UserSession.user.image.isNotEmpty()) {
                 Glide.with(context).load(UserSession.user.image).into(userProfileIV)
             }
 
-            if(item.status.equals("Payment Approval")){
+            if (item.status.equals("Payment Approval")) {
                 payNowTv.visibility = View.VISIBLE
-            }else{
+            } else {
                 payNowTv.visibility = View.GONE
             }
 
-            payNowTv.setOnClickListener{
-                Firebase.firestore.collection("OrderRequest").document(item.OrderID).update("status","Paid")
+            payNowTv.setOnClickListener {
+                paidClick.invoke(item.OrderID)
             }
 
             statusTV.text = item.status
             nameTv.text = item.patientName
             pharmacyTv.text = item.pharmacyName
-            dateTimeTv.text = "${convertDateTimestamp(item.date)} ${convertTimeTimestamp(item.time)}"
+            dateTimeTv.text =
+                "${convertDateTimestamp(item.date)} ${convertTimeTimestamp(item.time)}"
             paymentStatusTv.visibility = View.VISIBLE
             paymentStatusTv.text = item.modeofpayment
             addressTv.text = item.address
@@ -76,7 +81,7 @@ class NewDeliveryAdapter(val context: Context, val list: ArrayList<Order>) :
                         if (response.exists()) {
                             val user = response.toObject(User::class.java)
                             driverNameTv.text = "${user?.firstName} ${user?.lastName}"
-                            if(user!!.image.isNotEmpty()){
+                            if (user!!.image.isNotEmpty()) {
                                 Glide.with(context).load(user.image).into(driverProfileIV)
                             }
                         }

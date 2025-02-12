@@ -3,9 +3,12 @@ package com.buzzware.rapidouser.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Toast
 import com.buzzware.rapidouser.Model.User
+import com.buzzware.rapidouser.R
 import com.buzzware.rapidouser.databinding.ActivitySignInBinding
 import com.buzzware.rapidouser.utils.UserSession
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +37,22 @@ class SignInActivity : AppCompatActivity() {
     private fun setView() {
 
         binding.appBar.titleTV.text = "Log in"
+        binding.apply {
+            var isPasswordVisible = false
+
+            passwordToggle.setOnClickListener {
+                isPasswordVisible = !isPasswordVisible
+
+                if (isPasswordVisible) {
+                    passwordET.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    passwordToggle.setImageResource(R.drawable.icon_eye_show)
+                } else {
+                    passwordET.transformationMethod = PasswordTransformationMethod.getInstance()
+                    passwordToggle.setImageResource(R.drawable.icon_eye_hide)
+                }
+                passwordET.setSelection(passwordET.text.length)
+            }
+        }
 
     }
 

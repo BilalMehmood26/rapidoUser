@@ -6,15 +6,20 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.Toast
+import com.buzzware.rapidouser.Model.User
+import com.buzzware.rapidouser.R
 import com.buzzware.rapidouser.databinding.ActivitySignUpPatientInfoBinding
 import com.buzzware.rapidouser.databinding.AlertScheduleLayoutBinding
 import com.buzzware.rapidouser.databinding.LayoutOtpDialogBinding
 import com.buzzware.rapidouser.fragments.PaymentFragment
+import com.buzzware.rapidouser.utils.UserSession
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -30,6 +35,9 @@ class SignUpPatientInfoActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySignUpPatientInfoBinding
     private var dob = ""
+    private var relation = ""
+    private var relativeName = ""
+    private var relativePhoneNumber = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,13 +47,32 @@ class SignUpPatientInfoActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility =
             (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
 
+        relation = intent.getStringExtra("relation")?: ""
+        relativeName = intent.getStringExtra("relativeName")?: ""
+        relativePhoneNumber = intent.getStringExtra("relativePhoneNumber")?: ""
+
         setView()
         setListener()
     }
 
     private fun setView() {
         binding.appBar.titleTV.text = "Sign Up"
+        binding.apply {
+            var isPasswordVisible = false
 
+            passwordToggle.setOnClickListener {
+                isPasswordVisible = !isPasswordVisible
+
+                if (isPasswordVisible) {
+                    passwordET.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                    passwordToggle.setImageResource(R.drawable.icon_eye_show)
+                } else {
+                    passwordET.transformationMethod = PasswordTransformationMethod.getInstance()
+                    passwordToggle.setImageResource(R.drawable.icon_eye_hide)
+                }
+                passwordET.setSelection(passwordET.text.length)
+            }
+        }
 
     }
 
@@ -120,16 +147,29 @@ class SignUpPatientInfoActivity : AppCompatActivity() {
             "lastName" to lastName,
             "password" to password,
             "phoneNumber" to phoneNumber,
-            "relation" to "",
-            "relativeName" to "",
-            "relativePhoneNumber" to "",
+            "relation" to relation,
+            "relativeName" to relativeName,
+            "relativePhoneNumber" to relativePhoneNumber,
             "token" to token,
             "userRole" to "user"
+        )
+
+        val user = User(
+            dob = dob,
+            email = email,
+            firstName = firstName,
+            id = id,
+            lastName = lastName,
+            password = password,
+            phoneNumber = phoneNumber,
+            token = token,
+            userRole = "driver"
         )
 
         Firebase.firestore.collection("Users").document(id).set(userData).addOnCompleteListener {
             if(it.isSuccessful){
                 binding.progressBar.visibility = View.GONE
+                UserSession.user = user
                 val intent = Intent(this@SignUpPatientInfoActivity, ConsentFormActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(androidx.appcompat.R.anim.abc_fade_in, androidx.appcompat.R.anim.abc_fade_out)
@@ -163,6 +203,7 @@ class SignUpPatientInfoActivity : AppCompatActivity() {
         }
 
         dialogBinding.continueTV.setOnClickListener {
+
             signUp(firstName, lastName, email, phoneNumber, password)
             dialog.dismiss()
         }

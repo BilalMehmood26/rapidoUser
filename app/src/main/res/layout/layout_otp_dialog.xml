@@ -25,13 +25,13 @@
 
     <com.chaos.view.PinView
         android:id="@+id/otpView2"
+        style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:inputType="number"
         android:textAllCaps="true"
         android:textSize="@dimen/_10sdp"
-        android:text="4"
         app:itemRadius="@dimen/_10sdp"
         android:textColor="@color/black"
         app:itemCount="6"

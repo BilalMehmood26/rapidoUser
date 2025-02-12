@@ -239,7 +239,7 @@ class HomeFragment : Fragment() {
             "date" to date,
             "dob" to UserSession.user.dob,
             "latitude" to latLng.latitude,
-            "latitude" to latLng.longitude,
+            "longitude" to latLng.longitude,
             "patientEmail" to patientEmail,
             "patientID" to UserSession.user.id,
             "patientName" to patientName,

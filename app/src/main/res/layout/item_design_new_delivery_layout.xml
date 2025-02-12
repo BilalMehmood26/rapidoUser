@@ -19,87 +19,67 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <LinearLayout
-        android:id="@+id/detailLayout"
+    <TextView
+        android:id="@+id/name_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="----"
         android:layout_marginHorizontal="@dimen/_8sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_13sdp"
+        android:textStyle="italic"
         app:layout_constraintEnd_toStartOf="@+id/statusTV"
         app:layout_constraintStart_toEndOf="@+id/userProfileIV"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/userProfileIV" />
 
-        <TextView
-            android:id="@+id/name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="----"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_13sdp"
-            android:textStyle="italic" />
+    <TextView
+        android:id="@+id/pharmacy_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="---"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/_9sdp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toStartOf="@+id/payment_status_tv"
+        app:layout_constraintStart_toStartOf="@+id/name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/name_tv" />
 
-        <TextView
-            android:id="@+id/pharmacy_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="---"
-            android:textColor="@color/hint_color"
-            android:textSize="@dimen/_10sdp"
-            android:textStyle="italic" />
+    <ImageView
+        android:id="@+id/driverProfileIV"
+        android:layout_width="@dimen/_21sdp"
+        android:layout_height="@dimen/_21sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:src="@drawable/icon_profile_unselected"
+        app:layout_constraintBottom_toBottomOf="@+id/userProfileIV"
+        app:layout_constraintStart_toStartOf="@+id/pharmacy_tv"
+        app:layout_constraintTop_toBottomOf="@+id/pharmacy_tv" />
 
+    <TextView
+        android:id="@+id/driver_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="----"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/driverProfileIV"
+        app:layout_constraintTop_toTopOf="@+id/driverProfileIV" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_3sdp">
-
-            <ImageView
-                android:id="@+id/driverProfileIV"
-                android:layout_width="@dimen/_21sdp"
-                android:layout_height="@dimen/_21sdp"
-                android:src="@drawable/icon_profile_unselected"
-                app:layout_constraintBottom_toBottomOf="@+id/driverDetailLayout"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/driverDetailLayout" />
-
-            <LinearLayout
-                android:id="@+id/driverDetailLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="@dimen/_5sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/driverProfileIV"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/driver_name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="----"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="Driver"
-                    android:textColor="@color/hint_color"
-                    android:textSize="@dimen/_7sdp"
-                    android:textStyle="italic" />
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </LinearLayout>
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Driver"
+        android:textColor="@color/hint_color"
+        android:layout_marginStart="@dimen/_2sdp"
+        android:textSize="@dimen/_7sdp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/driverProfileIV"
+        app:layout_constraintTop_toBottomOf="@+id/driver_name_tv" />
 
     <TextView
         android:id="@+id/statusTV"
@@ -118,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat_medium"
-        android:text=""
+        android:text="cash"
         android:visibility="gone"
         android:textColor="@color/dark_red_color"
         android:textSize="@dimen/_8sdp"

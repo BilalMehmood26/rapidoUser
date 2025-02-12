@@ -37,7 +37,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:textSize="@dimen/_10sdp"
         android:textStyle="italic"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:imeOptions="actionNext"
         android:layout_marginBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_10sdp"
@@ -55,7 +55,7 @@
         android:fontFamily="@font/montserrat_regular"
         android:textSize="@dimen/_10sdp"
         android:textStyle="italic"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:imeOptions="actionNext"
         android:layout_marginBottom="@dimen/_10sdp"
         android:paddingHorizontal="@dimen/_10sdp"
@@ -162,16 +162,17 @@
             android:fontFamily="@font/montserrat_regular"
             android:textSize="@dimen/_10sdp"
             android:textStyle="italic"
+            android:inputType="textPassword"
             android:imeOptions="actionDone"
             android:paddingVertical="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/backIV"
+            app:layout_constraintEnd_toStartOf="@+id/password_toggle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <ImageView
-            android:id="@+id/backIV"
+            android:id="@+id/password_toggle"
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_15sdp"
             android:src="@drawable/icon_eye_show"
