@@ -38,7 +38,6 @@ class AddressesDialogFragment(val addressClick: (String, String, String, LatLng)
     private var userLat = 0.0
     private var userLng = 0.0
 
-    private var address = ""
     private var fullAddress = ""
     private var city = ""
     private var postalCode = ""
@@ -95,31 +94,23 @@ class AddressesDialogFragment(val addressClick: (String, String, String, LatLng)
                 }
 
                 override fun onPlaceSelected(place: Place) {
-
-                    var streetNumber = ""
-                    var route = ""
                     var city = ""
                     var postalCode = ""
 
                     place.addressComponents?.asList()?.forEach { component ->
                         when {
-                            component.types.contains("street_number") -> streetNumber = component.name
-                            component.types.contains("route") -> route = component.name
                             component.types.contains("locality") -> city = component.name
                             component.types.contains("postal_code") -> postalCode = component.name
                         }
                     }
 
                     val fullAddress = place.address ?: "Address not available"
-                    val streetAddress = "$streetNumber $route".trim()
-
 
                     myGoogleMap?.clear()
                     myGoogleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(place.latLng, 17f))
                     myGoogleMap?.addMarker(MarkerOptions().position(place.latLng).title(fullAddress))
 
                     confirmBtn.setOnClickListener {
-                        // Send full address along with components
                         addressClick.invoke(fullAddress, city, postalCode, place.latLng)
                         dismiss()
                     }
@@ -199,20 +190,22 @@ class AddressesDialogFragment(val addressClick: (String, String, String, LatLng)
             val geocoder = Geocoder(requireContext(), Locale.getDefault())
             try {
                 val addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)
+                Log.d("mapsLog", "onMapReady: ${addresses!!.get(0)}")
                 if (addresses != null && addresses.isNotEmpty()) {
                     val address = addresses[0]
                     fullAddress = address.getAddressLine(0)
                     city = address.locality
                     postalCode = address.postalCode
-                    confirmBtn.setOnClickListener {
-                        addressClick.invoke(fullAddress, city, postalCode, latLng)
-                        Log.d("ADDRESS", "onPlaceSelected: $fullAddress,$city, $postalCode,$latLng")
-                        dismiss()
-                    }
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
+                Log.d("mapsLog", "onMapReady: catch ${e.localizedMessage}")
             }
+        }
+        confirmBtn.setOnClickListener {
+            addressClick.invoke(fullAddress, city, postalCode, latLng)
+            Log.d("ADDRESS", "onPlaceSelected: $fullAddress,$city, $postalCode,$latLng")
+            dismiss()
         }
         myGoogleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14f))
     }
