@@ -43,11 +43,11 @@
         android:id="@+id/firstNatLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/bg_box"
         android:paddingHorizontal="@dimen/_8sdp"
         android:paddingVertical="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/profileIvLayout">
 
         <TextView
@@ -70,7 +70,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            tools:text="Carol "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -78,7 +77,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/firstNameTV"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Carol " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,11 +86,11 @@
         android:id="@+id/lastNameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/bg_box"
         android:paddingHorizontal="@dimen/_8sdp"
         android:paddingVertical="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/firstNatLayout">
 
         <TextView
@@ -113,7 +113,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            tools:text="DeLaurier "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -121,7 +120,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lastNameTV"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="DeLaurier " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -129,11 +129,11 @@
         android:id="@+id/emailLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/bg_box"
         android:paddingHorizontal="@dimen/_8sdp"
         android:paddingVertical="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/lastNameLayout">
 
         <TextView
@@ -156,7 +156,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            tools:text="CarolDeLaurier@rapido-rx.com "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -164,7 +163,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/emailTV"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="CarolDeLaurier@rapido-rx.com " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -172,11 +172,11 @@
         android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/bg_box"
         android:paddingHorizontal="@dimen/_8sdp"
         android:paddingVertical="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/emailLayout">
 
         <TextView
@@ -199,7 +199,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            tools:text="+98 765 4321 0 "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -207,7 +206,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/phoneTV"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="+98 765 4321 0 " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -215,11 +215,11 @@
         android:id="@+id/passwordLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:background="@drawable/bg_box"
         android:paddingHorizontal="@dimen/_8sdp"
         android:paddingVertical="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
         app:layout_constraintTop_toBottomOf="@+id/phoneLayout">
 
         <TextView
@@ -242,7 +242,6 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_medium"
-            tools:text="*************** "
             android:gravity="end"
             android:textColor="@color/black"
             android:textSize="@dimen/_11sdp"
@@ -250,7 +249,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/passwordTV"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="*************** " />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -259,6 +259,7 @@
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:background="@color/red_color"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="center"
@@ -267,7 +268,6 @@
         android:text="Save Information"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -276,9 +276,9 @@
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

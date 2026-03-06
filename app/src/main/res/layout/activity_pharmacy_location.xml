@@ -29,7 +29,9 @@
         android:id="@+id/parajeID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_15sdp"
         android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:background="@drawable/bg_box"
         android:fontFamily="@font/montserrat_regular"
         android:gravity="start"
@@ -40,10 +42,9 @@
         android:textColorHint="@color/hint_color"
         android:textSize="@dimen/_11sdp"
         android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/phoneLayout"
         app:spinner_arrow_drawable="@drawable/icon_dropdown_small"
         app:spinner_arrow_gravity="end"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
         app:spinner_arrow_padding="@dimen/_7sdp"
         app:spinner_divider_color="@color/hint_color"
         app:spinner_divider_show="true"
@@ -52,47 +53,46 @@
         app:spinner_popup_animation="dropdown"
         app:spinner_popup_background="@drawable/bg_box"
         app:spinner_popup_elevation="@dimen/_10sdp"
-        tools:ignore="HardcodedText,UnusedAttribute"
-        app:layout_constraintBottom_toTopOf="@+id/phoneLayout" />
+        tools:ignore="HardcodedText,UnusedAttribute" />
 
     <LinearLayout
         android:id="@+id/phoneLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4"
-        android:background="@drawable/bg_box"
         android:layout_marginHorizontal="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/bg_box"
+        android:orientation="horizontal"
+        android:weightSum="4"
         app:layout_constraintBottom_toTopOf="@+id/pharmacyAddressET">
 
         <com.hbb20.CountryCodePicker
             android:id="@+id/phone_ccp"
-            android:layout_weight="1.23"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textColorHint="@color/hint_color"
+            android:layout_weight="1.23"
             android:fontFamily="@font/montserrat_regular"
-            app:ccp_showArrow="true"
-            app:ccp_autoFormatNumber="true"
+            android:textColorHint="@color/hint_color"
             app:ccp_autoDetectCountry="true"
+            app:ccp_autoFormatNumber="true"
+            app:ccp_showArrow="true"
             app:ccp_textSize="14sp" />
 
         <EditText
             android:id="@+id/phone_et"
-            android:layout_weight="2.5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="2.5"
             android:background="@null"
-            android:paddingVertical="@dimen/_12sdp"
-            android:hint="Phone Number"
-            android:textColorHint="@color/hint_color"
             android:fontFamily="@font/montserrat_regular"
-            android:textSize="@dimen/_10sdp"
-            android:textStyle="italic"
+            android:hint="Phone Number"
             android:imeOptions="actionNext"
-            android:paddingHorizontal="@dimen/_10sdp" />
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_12sdp"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="italic" />
     </LinearLayout>
 
 
@@ -136,9 +136,9 @@
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

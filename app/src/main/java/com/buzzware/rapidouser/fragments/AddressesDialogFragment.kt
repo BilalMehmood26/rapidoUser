@@ -114,41 +114,6 @@ class AddressesDialogFragment(val addressClick: (String, String, String, LatLng)
                         addressClick.invoke(fullAddress, city, postalCode, place.latLng)
                         dismiss()
                     }
-
-
-                    /*   val addressComponents = p0.addressComponents?.asList() ?: emptyList()
-                       for (component in addressComponents) {
-                           when {
-                               component.types.contains("street_number") -> {
-                                   fullAddress = component.name
-                               }
-
-                               component.types.contains("route") -> {
-                                   fullAddress = if (fullAddress.isEmpty()) {
-                                       component.name
-                                   } else {
-                                       "$fullAddress ${component.name}"
-                                   }
-                               }
-
-                               component.types.contains("locality") -> {
-                                   city = component.name
-                               }
-
-                               component.types.contains("postal_code") -> {
-                                   postalCode = component.name
-                               }
-                           }
-                       }
-
-                       myGoogleMap?.clear()
-                       myGoogleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(p0.latLng, 17f))
-                       myGoogleMap?.addMarker(MarkerOptions().position(p0.latLng).title(fullAddress))
-                       confirmBtn.setOnClickListener {
-                           addressClick.invoke(fullAddress, city, postalCode, p0.latLng)
-                           Log.d("ADDRESS", "onPlaceSelected: Search $fullAddress,$city, $postalCode,${p0.latLng}")
-                           dismiss()
-                       }*/
                 }
             })
         }

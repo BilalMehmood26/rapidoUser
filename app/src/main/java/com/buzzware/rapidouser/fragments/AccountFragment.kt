@@ -71,16 +71,6 @@ class AccountFragment : Fragment() {
             .start()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            Glide.with(this).load(data?.data).into(binding.userProfileIV)
-            imageURI = data!!.data
-        } else if (resultCode == ImagePicker.RESULT_ERROR) {
-            Toast.makeText(fragmentContext, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
-        }
-    }
-
     private fun saveInfo(
         firstName: String,
         lastName: String,
